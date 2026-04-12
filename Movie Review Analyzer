@@ -1,0 +1,32 @@
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+reviews = [
+    "I love this movie",
+    "This film was terrible",
+    "Amazing acting and story",
+    "Worst movie ever",
+    "I enjoyed the movie a lot"
+]
+
+labels = ["positive", "negative", "positive", "negative", "positive"]
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(reviews)
+
+model = MultinomialNB()
+model.fit(X, labels)
+
+test_reviews = [
+    "I really love this",
+    "This was bad",
+    "Fantastic movie",
+    "I hate this film",
+    "It was okay"
+]
+
+X_test = vectorizer.transform(test_reviews)
+predictions = model.predict(X_test)
+
+for review, pred in zip(test_reviews, predictions):
+    print(f"{review} -> {pred}")
