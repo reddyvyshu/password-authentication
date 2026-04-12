@@ -1,0 +1,24 @@
+use_cases = [
+    "Face recognition for attendance systems",
+    "Object detection in self-driving cars",
+    "Security surveillance systems",
+    "Mask detection in public places",
+    "Product detection in retail stores"
+]
+
+for i, case in enumerate(use_cases, 1):
+    print(f"{i}. {case}")
+
+solution = {
+    "name": "Smart Attendance System",
+    "steps": [
+        "Capture image using webcam",
+        "Detect face",
+        "Match with database",
+        "Mark attendance automatically"
+    ]
+}
+
+print("\nSolution:", solution["name"])
+for step in solution["steps"]:
+    print("-", step)
