@@ -1,0 +1,20 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+documents = [
+    "AI is transforming the world",
+    "Machine learning is a part of AI",
+    "AI helps in automation and prediction",
+    "Deep learning improves AI models",
+    "AI is widely used in many industries"
+]
+
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(documents)
+
+feature_names = vectorizer.get_feature_names_out()
+
+for i, doc in enumerate(X.toarray()):
+    print(f"\nDocument {i+1} Top Words:")
+    sorted_words = sorted(zip(doc, feature_names), reverse=True)[:3]
+    for score, word in sorted_words:
+        print(f"{word} -> {score:.3f}")
